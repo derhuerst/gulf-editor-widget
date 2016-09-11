@@ -18,7 +18,14 @@ npm install gulf-editor-widget
 
 ## Usage
 
-todo
+```
+const connect = require('gulf-editor-widget')
+
+// create gulf document…
+// create editor-widget instance…
+
+connect(doc, editor)
+```
 
 ## Contributing
 

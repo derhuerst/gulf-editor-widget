@@ -16,5 +16,9 @@
 	"engines":     {"node": ">=6"},
 	"dependencies": {
 		"ot-text": "^1.0.1"
+	},
+	"peerDependencies": {
+		"gulf": "^4.1",
+		"editor-widget": "^1.1.1"
 	}
 }
