@@ -13,5 +13,8 @@
 	"repository":  "derhuerst/gulf-editor-widget",
 	"bugs":        "https://github.com/derhuerst/gulf-editor-widget/issues",
 	"license":     "ISC",
-	"engines":     {"node": ">=6"}
+	"engines":     {"node": ">=6"},
+	"dependencies": {
+		"ot-text": "^1.0.1"
+	}
 }
