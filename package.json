@@ -3,7 +3,7 @@
 	"description": "Operational transformations with editor-widget and gulf.",
 	"version":     "0.1.0",
 	"main":        "index.js",
-	"files":       ["index.js"],
+	"files":       ["index.js", "diff.js"],
 	"keywords": [
 		"operational transformation", "ot", "diff", "merge",
 		"editor-widget", "slap", "gulf"
