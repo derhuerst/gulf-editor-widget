@@ -1,0 +1,17 @@
+{
+	"name":        "gulf-editor-widget",
+	"description": "Operational transformations with editor-widget and gulf.",
+	"version":     "0.1.0",
+	"main":        "index.js",
+	"files":       ["index.js"],
+	"keywords": [
+		"operational transformation", "ot", "diff", "merge",
+		"editor-widget", "slap", "gulf"
+	],
+	"author":      "Jannis R <mail@jannisr.de>",
+	"homepage":    "https://github.com/derhuerst/gulf-editor-widget",
+	"repository":  "derhuerst/gulf-editor-widget",
+	"bugs":        "https://github.com/derhuerst/gulf-editor-widget/issues",
+	"license":     "ISC",
+	"engines":     {"node": ">=6"}
+}
