@@ -25,8 +25,11 @@ const connect = (doc, editor) => {
 
 	doc._collectChanges = (cb) => {
 		const newContent = editor.textBuf.getText()
-		doc.update(diff(oldContent, newContent))
-		oldContent = newContent
+		const changes = diff(oldContent, newContent)
+		if (changes.length) {
+		  doc.update(changes)
+		  oldContent = newContent
+		}
 		cb()
 	}
 
