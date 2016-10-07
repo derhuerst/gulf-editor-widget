@@ -9,6 +9,7 @@ const noop = () => {}
 
 const connect = (doc, editor) => {
 	let oldContent = editor.textBuf.getText()
+	let expectFeedback = false
 
 	doc._setContents = (newContent, cb) => {
 		oldContent = newContent
@@ -19,6 +20,7 @@ const connect = (doc, editor) => {
 	doc._change = (changes, cb) => {
 		const newContent = ot.apply(oldContent, changes)
 		editor.textBuf.setText(newContent)
+		expectFeedback = true
 		// todo: transform selection
 		cb()
 	}
@@ -31,6 +33,10 @@ const connect = (doc, editor) => {
 	}
 
 	editor.textBuf.onDidChange(() => {
+		if (expectFeedback) {
+		  expectFeedback = false
+		  return
+		}
 		doc._collectChanges(noop)
 	})
 }
