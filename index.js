@@ -3,7 +3,6 @@
 const ot = require('ot-text').type
 
 const diff = require('./diff')
-const noop = () => {}
 
 
 
@@ -11,29 +10,29 @@ const connect = (doc, editor) => {
 	let oldContent = editor.textBuf.getText()
 	let expectFeedback = false
 
-	doc._setContents = (newContent, cb) => {
+	doc._setContent = (newContent) => {
 		oldContent = newContent
 		editor.textBuf.setText(newContent)
-		cb()
+		return Promise.resolve()
 	}
 
-	doc._change = (changes, cb) => {
+	doc._onChange = (changes) => {
 		const newContent = ot.apply(oldContent, changes)
 		oldContent = newContent
 		editor.textBuf.setText(newContent)
 		expectFeedback = true
 		// todo: transform selection
-		cb()
+		return Promise.resolve()
 	}
 
-	doc._collectChanges = (cb) => {
+	doc._onBeforeChange = () => {
 		const newContent = editor.textBuf.getText()
 		const changes = diff(oldContent, newContent)
 		if (changes.length) {
 		  doc.update(changes)
 		  oldContent = newContent
 		}
-		cb()
+		return Promise.resolve()
 	}
 
 	editor.textBuf.onDidChange(() => {
@@ -41,7 +40,7 @@ const connect = (doc, editor) => {
 		  expectFeedback = false
 		  return
 		}
-		doc._collectChanges(noop)
+		doc._onBeforeChange()
 	})
 }
 
