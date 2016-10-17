@@ -19,6 +19,7 @@ const connect = (doc, editor) => {
 
 	doc._change = (changes, cb) => {
 		const newContent = ot.apply(oldContent, changes)
+		oldContent = newContent
 		editor.textBuf.setText(newContent)
 		expectFeedback = true
 		// todo: transform selection
